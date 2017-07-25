@@ -1,0 +1,47 @@
+{
+  "name": "xpan",
+  "version": "0.0.1",
+  "description": "A javascript library toggle expanding and fading DOM elements.",
+  "main": "dist/lib/Xpan.js",
+  "config": {
+    "full_name": "Xpan",
+    "module_name": "Xpan",
+    "year_launched": "2017",
+    "template_type": "lib",
+    "dev_host": "local.designbycy.com",
+    "dev_port": "9000"
+  },
+  "scripts": {
+    "dev": "npm run clean && NODE_ENV=development WEBPACK_TEMPLATE_TYPE=${npm_package_config_template_type} WEBPACK_TEMPLATE_COMPRESS=false webpack-dev-server --config ./build/webpack.config.js --open",
+    "dist": "npm run clean && NODE_ENV=production WEBPACK_TEMPLATE_TYPE=${npm_package_config_template_type} npm run dist:${npm_package_config_template_type}",
+    "dist:lib": "npm run dist:uncompressed && npm run dist:compressed",
+    "dist:uncompressed": "WEBPACK_TEMPLATE_COMPRESS=false webpack --config ./build/webpack.config.js",
+    "dist:compressed": "WEBPACK_TEMPLATE_COMPRESS=true webpack --config ./build/webpack.config.js",
+    "clean": "rimraf dev dist",
+    "serve": "http-server dist/${npm_package_config_template_type} -a ${npm_package_config_dev_host} -p ${npm_package_config_dev_port} -o",
+    "inst": "npm run inst:save_dev",
+    "inst:save_dev": "npm i babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 html-webpack-plugin http-server rimraf webpack webpack-dev-server --save-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cy-park/Xpan.git"
+  },
+  "keywords": [],
+  "author": "Chan Young Park (http://chanyoungpark.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cy-park/Xpan/issues"
+  },
+  "private": "true",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "html-webpack-plugin": "^2.29.0",
+    "http-server": "^0.10.0",
+    "rimraf": "^2.6.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.6.1"
+  }
+}
